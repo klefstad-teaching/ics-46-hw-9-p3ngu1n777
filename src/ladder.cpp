@@ -36,7 +36,7 @@ int compute_difference(const std::string& str1, const std::string& str2){
 
 bool is_adjacent(const string& word1, const string& word2){
     if(word1 == word2){
-        return false;
+        return true;
     }
     if(abs(int(word1.length()) - int(word2.length())) > 1){
         return false;
@@ -114,8 +114,15 @@ void load_words(set<string> &word_list, const string &file_name){
 }
 
 void print_word_ladder(const vector<string> &ladder){
-    for(int i = 0; i < ladder.size(); i++){
-        cout << ladder[i] << " ";
+    if(ladder.empty()){
+        cout << "No word ladder found.\n";
+    }
+    else{
+        cout << "Word ladder found: ";
+        for(int i = 0; i < ladder.size(); i++){
+            cout << ladder[i] << " ";
+        }
+        cout << "\n";
     }
 }
 
