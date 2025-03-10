@@ -35,6 +35,9 @@ int compute_difference(const std::string& str1, const std::string& str2){
 }
 
 bool is_adjacent(const string& word1, const string& word2){
+    if(word1 == word2){
+        return false;
+    }
     if(abs(int(word1.length()) - int(word2.length())) > 1){
         return false;
     }
