@@ -1,5 +1,6 @@
 #include "ladder.h"
 #include <cmath>
+#include <cstdlib>
 #include <fstream>
 #include <vector>
 #include <algorithm>
@@ -34,7 +35,7 @@ int compute_difference(const std::string& str1, const std::string& str2){
 }
 
 bool is_adjacent(const string& word1, const string& word2){
-    if(word1.length() - word2.length() > 1 || word2.length() - word1.length() > 1){
+    if(abs(int(word1.length()) - int(word2.length())) > 1){
         return false;
     }
 
@@ -64,7 +65,11 @@ bool is_adjacent(const string& word1, const string& word2){
             cur_word2 = cur_word2 + 1;
         }
     }
-    return true;
+
+    if(cur_word1 < word1.length() || cur_word2 < word2.length()){
+        diff_char = diff_char + 1;
+    }
+    return diff_char == 1;
 }
 
 vector<string> generate_word_ladder(const string &begin_word, const string &end_word, const set<string> &word_list){
